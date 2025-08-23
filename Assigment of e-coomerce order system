@@ -1,0 +1,231 @@
+## import csv
+import functools
+import os
+from dataclasses import dataclass, field
+from datetime import datetime
+from typing import Dict, List, Optional
+
+# --- Configuration Constants ---
+PRODUCTS_CSV_PATH = 'products.csv'
+LOG_FILE_PATH = 'log.txt'
+
+
+# --- Data Structures ---
+@dataclass
+class Product:
+    """A simple data class to represent a product."""
+    id: int
+    name: str
+    price: float
+
+
+@dataclass
+class OrderItem:
+    """Represents a product and its quantity within an order."""
+    product: Product
+    quantity: int
+
+    @property
+    def subtotal(self) -> float:
+        """Calculates the subtotal for this line item."""
+        return self.product.price * self.quantity
+
+
+# --- Helper Functions & Decorators ---
+def log_entry(message: str):
+    """A standalone helper function to write a timestamped log entry."""
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    with open(LOG_FILE_PATH, 'a') as log_file:
+        log_file.write(f'[{timestamp}] {message}\n')
+
+def log_action(func):
+    """A decorator that logs the execution of a method."""
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        class_name = args[0].__class__.__name__
+        method_name = func.__name__
+        log_entry(f'{class_name}.{method_name} executed.')
+        return func(*args, **kwargs)
+    return wrapper
+
+
+# --- Core Classes ---
+class ProductCatalog:
+    """Manages the loading and retrieval of products from the CSV file."""
+
+    def __init__(self, filepath: str):
+        """Initializes the catalog and loads products into memory."""
+        self._products: Dict[int, Product] = {}
+        self._load_products(filepath)
+
+    def _load_products(self, filepath: str):
+        """Reads the CSV file once and stores products in a dictionary for fast access."""
+        try:
+            with open(filepath, mode='r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    product = Product(
+                        id=int(row['id']),
+                        name=row['name'],
+                        price=float(row['price'])
+                    )
+                    self._products[product.id] = product
+            log_entry(f"Product catalog loaded successfully from {filepath}.")
+        except FileNotFoundError:
+            log_entry(f"Error: Product file not found at {filepath}.")
+            print(f"ERROR: Could not find the product file: {filepath}")
+        except (ValueError, KeyError) as e:
+            log_entry(f"Error parsing product file: {e}")
+            print(f"ERROR: Could not parse the product file. Check its format.")
+
+    def get_product(self, product_id: int) -> Optional[Product]:
+        """Retrieves a single product by its ID."""
+        return self._products.get(product_id)
+
+    def display(self):
+        """Prints a formatted list of all available products."""
+        print("\n--- Available Products ---")
+        print(f"{'ID':<5} {'Name':<20} {'Price':<10}")
+        print("-" * 37)
+        for product in self._products.values():
+            print(f"{product.id:<5} {product.name:<20} ${product.price:<10.2f}")
+        print("-" * 37)
+
+
+class Order:
+    """Manages e-commerce order items, discounts, and total calculation."""
+    discount_rate: float = 0.0
+
+    def __init__(self, catalog: ProductCatalog):
+        """
+        Initializes an order.
+        
+        Args:
+            catalog: A ProductCatalog instance to validate and retrieve products.
+        """
+        self.items: List[OrderItem] = []
+        self._catalog = catalog
+
+    @log_action
+    def add_item(self, product_id: int, quantity: int):
+        """Finds a product in the catalog and adds it to the order."""
+        product = self._catalog.get_product(product_id)
+
+        if not product:
+            log_entry(f'Attempted to add invalid product ID: {product_id}')
+            print(f"Error: Product with ID {product_id} not found.")
+            return
+
+        self.items.append(OrderItem(product=product, quantity=quantity))
+        log_entry(f"Added item: {product.name} (x{quantity})")
+        print(f"Added {quantity} x {product.name} to the order.")
+
+    @property
+    def total(self) -> float:
+        """
+        Calculates the total cost of the order, applying any global discount.
+        This is a property, so you can access it like an attribute (e.g., my_order.total).
+        """
+        subtotal = sum(item.subtotal for item in self.items)
+        final_total = subtotal * (1 - self.discount_rate / 100)
+        return final_total
+
+    @classmethod
+    def set_global_discount(cls, rate: float):
+        """Sets a global discount rate for all future orders."""
+        cls.discount_rate = rate
+        log_entry(f'Global discount rate set to {rate}%.')
+        print(f"Global discount has been updated to {rate}%.")
+
+    def display(self):
+        """Prints a summary of the order and the final total."""
+        print("\n--- Your Order Summary ---")
+        if not self.items:
+            print("Your order is currently empty.")
+            return
+
+        subtotal = sum(item.subtotal for item in self.items)
+        for item in self.items:
+            print(f"- {item.product.name} (x{item.quantity}): ${item.subtotal:.2f}")
+
+        print("-" * 25)
+        print(f"Subtotal: ${subtotal:.2f}")
+        if self.discount_rate > 0:
+            print(f"Discount: {self.discount_rate}%")
+        
+        print(f"Final Total: ${self.total:.2f}")
+        log_entry(f"Calculated final total: {self.total:.2f}")
+
+
+# --- Main Application Logic ---
+def create_dummy_product_csv():
+    """Helper function to create a products.csv file if it doesn't exist."""
+    if not os.path.exists(PRODUCTS_CSV_PATH):
+        print(f"{PRODUCTS_CSV_PATH} not found. Creating a dummy file.")
+        with open(PRODUCTS_CSV_PATH, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['id', 'name', 'price'])
+            writer.writerow(['1', 'Laptop', '1200'])
+            writer.writerow(['2', 'Phone', '800'])
+            writer.writerow(['3', 'Headphones', '150'])
+            writer.writerow(['4', 'Mouse', '40'])
+            writer.writerow(['5', 'Keyboard', '60'])
+
+def main():
+    """Main function to run the interactive e-commerce system."""
+    create_dummy_product_csv()
+
+    # Clear previous log file for a clean run
+    if os.path.exists(LOG_FILE_PATH):
+        os.remove(LOG_FILE_PATH)
+
+    log_entry("System startup.")
+    print("Welcome to the E-commerce System! A new session has started.")
+
+    # Load the product catalog once
+    catalog = ProductCatalog(PRODUCTS_CSV_PATH)
+    # Create an order instance, giving it access to the catalog
+    my_order = Order(catalog)
+
+    while True:
+        print("\n--- Menu ---")
+        print("1. View all products")
+        print("2. Add an item to your order")
+        print("3. View your order and total")
+        print("4. Set a global discount")
+        print("5. Exit")
+        
+        choice = input("Enter your choice (1-5): ")
+
+        if choice == '1':
+            catalog.display()
+        elif choice == '2':
+            try:
+                product_id = int(input("Enter product ID to add: "))
+                quantity = int(input("Enter quantity: "))
+                if quantity > 0:
+                    my_order.add_item(product_id, quantity)
+                else:
+                    print("Quantity must be a positive number.")
+            except ValueError:
+                print("Invalid input. Please enter numbers for ID and quantity.")
+        elif choice == '3':
+            my_order.display()
+        elif choice == '4':
+            try:
+                discount = float(input("Enter new global discount rate (%): "))
+                if 0 <= discount <= 100:
+                    Order.set_global_discount(discount)
+                else:
+                    print("Please enter a discount between 0 and 100.")
+            except ValueError:
+                print("Invalid input. Please enter a number for the discount.")
+        elif choice == '5':
+            log_entry("System shutdown.")
+            print("Exiting system. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a number from 1 to 5.")
+
+if __name__ == "__main__":
+    main()
