@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarai Saathi (زرعی ساتھی) Demo</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Load Heroicons for icons -->
+    <script type_A="module" src="https://cdn.jsdelivr.net/npm/heroicons@2.1.3/24/outline/index.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .urdu-text {
+            font-family: 'Noto Nastaliq Urdu', 'Inter', sans-serif; /* Fallback for Urdu */
+            font-size: 1.25rem;
+            line-height: 1.8;
+        }
+        /* Custom styles for file input */
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+        }
+        .file-input-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+        .file-input-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            background-color: #22c55e; /* green-500 */
+            color: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        .file-input-button:hover {
+            background-color: #16a34a; /* green-600 */
+        }
+    </style>
+</head>
+<body class="bg-green-50 text-gray-900">
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto max-w-6xl px-4 py-5">
+            <h1 class="text-4xl font-bold text-green-700">
+                Zarai Saathi <span class="urdu-text text-3xl text-green-800">(زرعی ساتھی)</span>
+            </h1>
+            <p class="mt-1 text-lg text-gray-600">Empowering Pakistan's Farmers with Data-Driven Intelligence.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto max-w-6xl px-4 py-12">
+
+        <!-- Features Grid -->
+        <section id="features">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Our Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1: Water Management -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 bg-blue-100 text-blue-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v.01m0 18v.01m0-6v.01m-6.938 4.01-1.414-1.414a9 9 0 1 1 12.728 0l-1.414 1.414M9.879 16.516a3 3 0 0 0 4.242 0l-4.242 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Smart Irrigation Scheduling</h3>
+                    <p class="text-gray-600">Combats flood irrigation by using satellite & weather data to send precise watering alerts (e.g., "Water for 1.5 hours tomorrow"). <a href="#weather-demo" class="text-blue-600 hover:underline font-medium">See Forecast Demo!</a></p>
+                </div>
+
+                <!-- Card 2: Credit Scoring -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 bg-green-100 text-green-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0 1 15.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 0 1 3 6h-.75m0 0v-.75A.75.75 0 0 1 3 4.5h.75m12 0v.75a.75.75 0 0 0 .75.75h.75m0 0v-.75a.75.75 0 0 0-.75-.75h-.75M9 4.5v.75A.75.75 0 0 1 8.25 6h-.75m0 0v-.75A.75.75 0 0 1 8.25 4.5h.75m3 13.5m-3 0v.75c0 .414.336.75.75.75h1.5a.75.75 0 0 0 .75-.75v-.75m-3 0h3m-3 0H9m12 0v.75a.75.75 0 0 1-.75.75h-1.5a.75.75 0 0 1-.75-.75v-.75m3 0h-3m3 0h.75m-12 0v.75a.75.75 0 0 1-.75.75H3.75a.75.75 0 0 1-.75-.75v-.75m3 0h-3m3 0h.75" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">"Farm Health" Credit Score</h3>
+                    <p class="text-gray-600">Data-driven alternative credit scoring to bypass predatory lending and unlock fair finance. <a href="#credit-demo" class="text-blue-600 hover:underline font-medium">Try Score Demo!</a></p>
+                </div>
+
+                <!-- Card 3: Market Access -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 text-indigo-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5c0-.966.784-1.75 1.75-1.75h3.5a1.75 1.75 0 0 1 1.75 1.75V21m-5.25 0V11.25c0-.966.784-1.75 1.75-1.75h3.5a1.75 1.75 0 0 1 1.75 1.75V21m-5.25 0H3.75v-7.5c0-.966.784-1.75 1.75-1.75h3.5a1.75 1.75 0 0 1 1.75 1.75V21m-5.25 0H3.75m0-13.5h16.5c.621 0 1.125.504 1.125 1.125v16.5c0 .621-.504 1.125-1.125 1.125H3.75A1.125 1.125 0 0 1 2.625 21V8.625c0-.621.504-1.125 1.125-1.125Z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Digital Marketplace</h3>
+                    <p class="text-gray-600">Transparent price aggregation and direct market access. <a href="#market-demo" class="text-blue-600 hover:underline font-medium">See Price Demo!</a></p>
+                </div>
+
+                <!-- Card 4: Pest & Disease -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 bg-red-100 text-red-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047l-1.04 1.04A8.25 8.25 0 0 0 12 21a8.25 8.25 0 0 0 7.002-12.953l-1.04-1.04Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9.75v6.75m0-6.75a.75.75 0 0 1 .75.75v6.75a.75.75 0 0 1-1.5 0V10.5a.75.75 0 0 1 .75-.75Z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pest & Disease Alerts</h3>
+                    <p class="text-gray-600">Computer vision diagnostics to protect crops from outbreaks. <a href="#pest-demo" class="text-blue-600 hover:underline font-medium">Try Live Demo!</a></p>
+                </div>
+
+                <!-- Card 5: Input Management -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 bg-yellow-100 text-yellow-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Optimized Input Management</h3>
+                    <p class="text-gray-600">Transforms farm management from guesswork to precision. It leverages satellite imagery and AI to provide hyper-specific, actionable advice for each farmer's plot. <a href="#input-demo" class="text-blue-600 hover:underline font-medium">Try Satellite Demo!</a></p>
+                </div>
+
+                <!-- Card 6: Logistics -->
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <div class="flex items-center justify-center h-16 w-16 bg-purple-100 text-purple-600 rounded-full mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.125-.504 1.125-1.125V14.25m-17.25 4.5v-1.875a3.375 3.375 0 0 1 3.375-3.375h9.75a3.375 3.375 0 0 1 3.375 3.375V18.75M14.25 6.75h0v0m0 0h-3v-3h3v3Z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Last-Mile Logistics</h3>
+                    <p class="text-gray-600">Integrated transport booking to connect farmers with reliable logistics partners.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo 1: Weather (FIX: ADDED MISSING HTML BLOCK) -->
+        <section id="weather-demo" class="mt-20 pt-12 border-t border-gray-200">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Simulate: Local Weather Forecast</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
+                <div class="flex flex-col md:flex-row gap-6 mb-6">
+                    <div class="flex-grow">
+                        <label for="weather-location" class="block text-sm font-medium text-gray-700 mb-1">Select Location:</label>
+                        <select id="weather-location" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="faisalabad" selected>Faisalabad</option>
+                            <option value="multan">Multan</option>
+                            <option value="lahore">Lahore</option>
+                            <option value="sukkur">Sukkur</option>
+                        </select>
+                    </div>
+                    <button id="weather-button" class="w-full md:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-green-700 transition-colors duration-300 self-end">
+                        Get Forecast
+                    </button>
+                </div>
+
+                <!-- Weather Loading Spinner -->
+                <div id="weather-loading" class="hidden text-center my-6">
+                    <div class="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-green-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status"></div>
+                    <p class="text-gray-600 mt-2">Fetching PMD Data...</p>
+                </div>
+
+                <!-- Weather Result Area -->
+                <div id="weather-results" class="hidden mt-8">
+                    <h3 id="weather-location-title" class="text-2xl font-semibold mb-4">Forecast for Faisalabad</h3>
+                    <!-- Current Conditions -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-6">
+                        <h4 class="text-xl font-semibold text-blue-800 mb-3">Current Conditions</h4>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Temperature</p>
+                                <p id="weather-current-temp" class="text-3xl font-bold">34°C</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Condition</p>
+                                <p id="weather-current-condition" class="text-3xl font-bold">Sunny</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Feels Like</p>
+                                <p id="weather-feels-like" class="text-xl font-medium">36°C</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Wind</p>
+                                <p id="weather-wind" class="text-xl font-medium">10 km/h</p>
+                            </div>
+                             <div>
+                                <p class="text-sm text-gray-600">Humidity</p>
+                                <p id="weather-humidity" class="text-xl font-medium">40%</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5-Day Forecast -->
+                    <div>
+                        <h4 class="text-xl font-semibold text-blue-800 mb-3">5-Day Forecast</h4>
+                        <div id="forecast-grid" class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                            <!-- JS will populate this -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo 2: Market Prices (FIX: ADDED MISSING HTML BLOCK) -->
+        <section id="market-demo" class="mt-20 pt-12 border-t border-gray-200">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Simulate: Live Market Prices</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
+                 <div class="flex flex-col md:flex-row gap-6 mb-6">
+                    <div class="flex-grow">
+                        <label for="market-location" class="block text-sm font-medium text-gray-700 mb-1">Select Market (Mandi):</label>
+                        <select id="market-location" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="lahore" selected>Lahore</option>
+                            <option value="karachi">Karachi</option>
+                            <option value="faisalabad">Faisalabad</option>
+                            <option value="rawalpindi">Rawalpindi</option>
+                        </select>
+                    </div>
+                    <div class="flex-grow">
+                        <label for="market-crop" class="block text-sm font-medium text-gray-700 mb-1">Select Crop:</label>
+                        <select id="market-crop" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="wheat" selected>Wheat (گندم)</option>
+                            <option value="cotton">Cotton (کپاس)</option>
+                            <option value="rice">Rice (چاول)</option>
+                            <option value="sugarcane">Sugarcane (گنا)</option>
+                        </select>
+                    </div>
+                 </div>
+                 <div class="text-center mb-6">
+                    <button id="price-button" class="w-full md:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-green-700 transition-colors duration-300">
+                        Get Prices
+                    </button>
+                 </div>
+
+                <!-- Price Loading Spinner -->
+                <div id="price-loading" class="hidden text-center my-6">
+                    <div class="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-green-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status"></div>
+                    <p class="text-gray-600 mt-2">Fetching Live Prices...</p>
+                </div>
+
+                <!-- Price Result Area -->
+                <div id="price-results" class="hidden mt-8">
+                    <h3 id="price-location-title" class="text-2xl font-semibold mb-4 text-center">Prices for Wheat in Lahore</h3>
+                    <div class="overflow-x-auto rounded-lg border border-gray-200">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="py-3 px-4 text-left text-sm font-semibold text-gray-600 uppercase">Grade / Type</th>
+                                    <th class="py-3 px-4 text-left text-sm font-semibold text-gray-600 uppercase">Price (per 40kg)</th>
+                                    <th class="py-3 px-4 text-left text-sm font-semibold text-gray-600 uppercase">Trend (24h)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="price-table-body" class="bg-white divide-y divide-gray-200">
+                                <!-- JS will populate this -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo 3: Input Management (FIX: ADDED MISSING HTML BLOCK) -->
+        <section id="input-demo" class="mt-20 pt-12 border-t border-gray-200">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Simulate: Precision Input Management</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
+                <div class="flex flex-col md:flex-row gap-6 mb-6">
+                    <div class="flex-grow">
+                        <label for="farm-plot" class="block text-sm font-medium text-gray-700 mb-1">Select Farm Plot:</label>
+                        <select id="farm-plot" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="plot_a" selected>Plot A (12 Acre) - Wheat</option>
+                            <option value="plot_b">Plot B (8 Acre) - Cotton</option>
+                            <option value="plot_c">Plot C (15 Acre) - Sugarcane</option>
+                        </select>
+                    </div>
+                    <button id="analyze-plot-button" class="w-full md:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-green-700 transition-colors duration-300 self-end">
+                        Analyze Satellite Data
+                    </button>
+                </div>
+
+                <!-- Input Loading Spinner -->
+                <div id="input-loading" class="hidden text-center my-6">
+                    <div class="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-green-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status"></div>
+                    <p class="text-gray-600 mt-2">Analyzing Sentinel-2 Satellite Imagery...</p>
+                </div>
+
+                <!-- Input Result Area -->
+                <div id="input-results" class="hidden mt-8">
+                    <h3 id="input-plot-title" class="text-2xl font-semibold mb-4">Plot A (12 Acre) - Wheat</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                        <!-- Satellite Image -->
+                        <div>
+                            <img id="plot-image" src="https://placehold.co/600x400/4ade80/ffffff?text=Plot+A+Analysis&font=inter" alt="Satellite map of farm plot" class="rounded-lg shadow-md w-full">
+                            <p class="text-sm text-gray-500 mt-2 text-center">Satellite analysis (Simulated NDVI)</p>
+                        </div>
+                        
+                        <!-- AI Analysis -->
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="text-xl font-semibold">Overall Health:</h4>
+                            <p id="plot-health" class="text-lg font-bold text-yellow-600 mb-4">Variable</p>
+                            
+                            <h4 class="text-xl font-semibold">Key Finding:</h4>
+                            <p class="text-gray-700 mb-4" id="plot-finding">Signs of Nitrogen deficiency detected...</p>
+
+                            <h4 class="text-xl font-semibold">Recommendations:</h4>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1" id="plot-recommendations">
+                                <!-- JS will populate this -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Demo 4: Credit Score Simulator (NEW) -->
+        <section id="credit-demo" class="mt-20 pt-12 border-t border-gray-200">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Simulate: "Farm Health" Credit Score</h2>
+            <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
+                <p class="text-center text-gray-600 mb-6">This simulates how the "Farm Health Score" is calculated from all your platform data (as per Table 2) to determine loan eligibility.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div>
+                        <label for="credit-irrigation" class="block text-sm font-medium text-gray-700 mb-1">Irrigation Efficiency (from Model)</label>
+                        <select id="credit-irrigation" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="high">High (Precision)</option>
+                            <option value="medium" selected>Medium (Standard)</option>
+                            <option value="low">Low (Flood)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="credit-nutrients" class="block text-sm font-medium text-gray-700 mb-1">Nutrient Management (from Model)</label>
+                        <select id="credit-nutrients" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="optimized">Optimized (Targeted)</option>
+                            <option value="standard" selected>Standard (Blanket)</option>
+                            <option value="poor">Poor (Not Tracked)</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="credit-pest" class="block text-sm font-medium text-gray-700 mb-1">Pest/Disease Response (from Model)</label>
+                        <select id="credit-pest" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="good">Good (Fast Response)</option>
+                            <option value="fair" selected>Fair (Some Response)</option>
+                            <option value="poor">Poor (No Response)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="credit-history" class="block text-sm font-medium text-gray-700 mb-1">Loan Repayment History</label>
+                        <select id="credit-history" class="w-full p-3 border border-gray-300 rounded-lg">
+                            <option value="excellent">Excellent</option>
+                            <option value="good" selected>Good</option>
+                            <option value="none">No History</option>
+                            <option value="poor">Poor</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center mb-6">
+                    <button id="credit-button" class="w-full md:w-auto bg-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-green-700 transition-colors duration-300">
+                        Calculate Score
+                    </button>
+                </div>
+
+                <!-- Credit Loading Spinner -->
+                <div id="credit-loading" class="hidden text-center my-6">
+                    <div class="inline-block h-10 w-10 animate-spin rounded-full border-4 border-solid border-green-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status"></div>
+                    <p class="text-gray-600 mt-2">Calculating Farm Health Score...</p>
+                </div>
+
+                <!-- Credit Result Area -->
+                <div id="credit-results" class="hidden mt-8 text-center">
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-6 max-w-md mx-auto">
+                        <p class="text-lg text-gray-600">Your "Farm Health Score" is:</p>
+                        <p id="credit-score" class="text-7xl font-bold text-green-700 my-2">720</p>
+                        <p id="credit-rating" class="text-2xl font-semibold text-green-600 mb-4">Good</p>
+                        
+                        <div class="border-t pt-4">
+                             <p class="text-lg text-gray-600">Estimated Loan Eligibility:</p>
+                             <p id="credit-loan" class="text-3xl font-bold text-gray-900">Rs. 250,000</p>
+                             <p class="text-sm text-gray-500">(at 8% p.a. from partner bank)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Demo: Pest Detection -->
+        <section id="pest-demo" class="mt-20 pt-12 border-t border-gray-200">
+            <h2 class="text-3xl font-semibold mb-8 text-center">Live Demo: Pest & Disease Detection</h2>
+            <div class="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-2xl">
+                
+                <p class="text-center text-gray-600 mb-6">Upload a photo of your crop to get an instant AI diagnosis (using the Gemini API).</p>
+                
+                <!-- File Upload UI -->
+                <div class="flex flex-col items-center">
+                    <div class="file-input-wrapper mb-4">
+                        <button class="file-input-button" id="file-button">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+                            </svg>
+                            Choose a file
+                        </button>
+                        <input type="file" id="file-upload" accept="image/*">
+                    </div>
+                    <span id="file-name" class="text-gray-500 text-sm mb-4">No file chosen</span>
+                    
+                    <button id="detect-button" class="bg-green-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-green-700 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        Analyze Crop
+                    </button>
+                </div>
+
+                <!-- Loading Spinner (Hidden by default) -->
+                <div id="loading-spinner" class="hidden text-center my-6">
+                    <div class="inline-block h-12 w-12 animate-spin rounded-full border-4 border-solid border-green-500 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" role="status">
+                        <span class="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">Loading...</span>
+                    </div>
+                    <p class="text-gray-600 mt-2">Running AI Model (Gemini API)...</p>
+                </div>
+
+                <!-- Result Area (Hidden by default) -->
+                <div id="result-area" class="hidden mt-8 border-t pt-8">
+                    <h3 class="text-2xl font-semibold mb-4 text-center" id="diagnosis-title">Diagnosis Result</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+                        <!-- User's Image -->
+                        <div>
+                            <img id="result-image" src="https://placehold.co/600x400/eeeeee/cccccc?text=Your+Crop+Image" alt="Uploaded Crop" class="rounded-lg shadow-md w-full">
+                            <p class="text-sm text-gray-500 mt-2 text-center">Your Uploaded Image</p>
+                        </div>
+                        
+                        <!-- AI Diagnosis -->
+                        <div id="diagnosis-card" class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <h4 class="text-xl font-semibold" id="disease-name-title">Disease Detected:</h4>
+                            <p class="text-lg mb-4" id="disease-name">...</p>
+                            
+                            <h4 class="text-xl font-semibold" id="confidence-title">Confidence:</h4>
+                            <p class="text-lg mb-4" id="confidence">...</p>
+
+                            <h4 class="text-xl font-semibold" id="recommendations-title">Recommendation:</h4>
+                            <ul class="list-disc list-inside text-gray-700 space-y-1" id="recommendations">
+                                <!-- Recommendations will be populated by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-green-800 text-green-100 mt-20">
+        <div class="container mx-auto max-w-6xl px-4 py-6 text-center">
+            <p>&copy; 2025 Zarai Saathi. A concept for Pakistan's agricultural future.</p>
+        </div>
+    </footer>
+
+    <script>
+        // === Mock Data for New Demos ===
+        const mockWeatherData = {
+            faisalabad: {
+                current: { temp: "34°C", condition: "Sunny", feels: "36°C", wind: "10 km/h", humidity: "40%" },
+                forecast: [
+                    { day: "Tue", icon: "sun", high: "35°", low: "22°" },
+                    { day: "Wed", icon: "sun", high: "36°", low: "23°" },
+                    { day: "Thu", icon: "cloud-sun", high: "35°", low: "24°" },
+                    { day: "Fri", icon: "cloud", high: "33°", low: "23°" },
+                    { day: "Sat", icon: "sun", high: "34°", low: "22°" },
+                ]
+            },
+            multan: {
+                current: { temp: "37°C", condition: "Clear", feels: "39°C", wind: "15 km/h", humidity: "35%" },
+                forecast: [
+                    { day: "Tue", icon: "sun", high: "38°", low: "25°" },
+                    { day: "Wed", icon: "sun", high: "39°", low: "26°" },
+                    { day: "Thu", icon: "sun", high: "38°", low: "25°" },
+                    { day: "Fri", icon: "cloud-sun", high: "36°", low: "24°" },
+                    { day: "Sat", icon: "sun", high: "37°", low: "25°" },
+                ]
+            },
+            lahore: {
+                current: { temp: "33°C", condition: "Hazy", feels: "35°C", wind: "8 km/h", humidity: "50%" },
+                forecast: [
+                    { day: "Tue", icon: "cloud-sun", high: "34°", low: "23°" },
+                    { day: "Wed", icon: "cloud", high: "32°", low: "23°" },
+                    { day: "Thu", icon: "bolt", high: "31°", low: "22°" },
+                    { day: "Fri", icon: "cloud-sun", high: "33°", low: "22°" },
+                    { day: "Sat", icon: "sun", high: "34°", low: "23°" },
+                ]
+            },
+            sukkur: {
+                current: { temp: "38°C", condition: "Hot", feels: "40°C", wind: "18 km/h", humidity: "30%" },
+                forecast: [
+                    { day: "Tue", icon: "sun", high: "39°", low: "26°" },
+                    { day: "Wed", icon: "sun", high: "40°", low: "27°" },
+                    { day: "Thu", icon: "sun", high: "40°", low: "27°" },
+                    { day: "Fri", icon: "sun", high: "39°", low: "26°" },
+                    { day: "Sat", icon: "sun", high: "38°", low: "25°" },
+                ]
+            }
+        };
+
+        const mockPriceData = {
+            lahore: {
+                wheat: [
+                    { grade: "Grade A", price: "4,250", trend: "+1.2%", trendDir: "up" },
+                    { grade: "Grade B", price: "4,100", trend: "+1.0%", trendDir: "up" },
+                    { grade: "Grade C", price: "3,950", trend: "0.0%", trendDir: "flat" },
+                ],
+                cotton: [
+                    { grade: "Phutti", price: "9,500", trend: "-0.5%", trendDir: "down" },
+                ],
+                rice: [
+                    { grade: "Basmati 1121", price: "14,000", trend: "+3.0%", trendDir: "up" },
+                    { grade: "Basmati Super", price: "12,500", trend: "+2.5%", trendDir: "up" },
+                ],
+                sugarcane: [
+                    { grade: "Govt. Rate", price: "450", trend: "0.0%", trendDir: "flat" },
+                ]
+            },
+            karachi: {
+                wheat: [
+                    { grade: "Grade A", price: "4,300", trend: "+1.0%", trendDir: "up" },
+                    { grade: "Grade B", price: "4,150", trend: "+0.8%", trendDir: "up" },
+                ],
+                cotton: [
+                    { grade: "Phutti", price: "9,550", trend: "-0.2%", trendDir: "down" },
+                ],
+                rice: [
+                    { grade: "Basmati 1121", price: "14,200", trend: "+2.8%", trendDir: "up" },
+                    { grade: "Basmati Super", price: "12,600", trend: "+2.0%", trendDir: "up" },
+                ],
+                sugarcane: [
+                    { grade: "Govt. Rate", price: "450", trend: "0.0%", trendDir: "flat" },
+                ]
+            },
+            faisalabad: {
+                wheat: [
+                    { grade: "Grade A", price: "4,200", trend: "+1.1%", trendDir: "up" },
+                    { grade: "Grade B", price: "4,050", trend: "+1.0%", trendDir: "up" },
+                ],
+                cotton: [
+                    { grade: "Phutti", price: "9,450", trend: "-0.8%", trendDir: "down" },
+                ],
+                rice: [
+                    { grade: "Basmati 1121", price: "13,900", trend: "+3.0%", trendDir: "up" },
+                ],
+                sugarcane: [
+                    { grade: "Govt. Rate", price: "450", trend: "0.0%", trendDir: "flat" },
+                ]
+            },
+            rawalpindi: {
+                 wheat: [
+                    { grade: "Grade A", price: "4,220", trend: "+1.3%", trendDir: "up" },
+                    { grade: "Grade B", price: "4,080", trend: "+1.0%", trendDir: "up" },
+                ],
+                cotton: [
+                    { grade: "N/A", price: "N/A", trend: "", trendDir: "flat" },
+                ],
+                rice: [
+                    { grade: "Basmati Super", price: "12,700", trend: "+2.2%", trendDir: "up" },
+                ],
+                sugarcane: [
+                    { grade: "Govt. Rate", price: "450", trend: "0.0%", trendDir: "flat" },
+                ]
+            }
+        };
+
+        const mockPlotData = {
+            plot_a: {
+                title: "Plot A (12 Acre) - Wheat",
+                image: "https://placehold.co/600x400/4ade80/ffffff?text=Plot+A+Analysis&font=inter",
+                health: "Variable",
+                finding: "Signs of Nitrogen deficiency detected in the northern 3.5 acres of the plot.",
+                recommendations: [
+                    "Targeted N-fertilizer application advised for northern section.",
+                    "No additional fertilizer needed for the southern 8.5 acres.",
+                    "Estimated Cost Saving: 30-40%",
+                    "Check irrigation in the northern section for potential issues."
+                ]
+            },
+            plot_b: {
+                title: "Plot B (8 Acre) - Cotton",
+                image: "https://placehold.co/600x400/22c55e/ffffff?text=Plot+B+Analysis&font=inter",
+                health: "Good",
+                finding: "Crop health appears uniform. No significant nutrient deficiencies detected.",
+                recommendations: [
+                    "Continue standard nutrient management plan.",
+                    "Monitor for pests as cotton enters the flowering stage.",
+                    "No precision application required at this time."
+                ]
+            },
+            plot_c: {
+                title: "Plot C (15 Acre) - Sugarcane",
+                image: "https://placehold.co/600x400/facc15/ffffff?text=Plot+C+Analysis&font=inter",
+                health: "Fair",
+                finding: "Moderate water stress and potential potassium deficiency detected on the western edge.",
+                recommendations: [
+                    "Increase irrigation frequency on the western 5-acre strip.",
+                    "Conduct a soil test to confirm potassium levels.",
+                    "Consider targeted potash application if deficiency is confirmed."
+                ]
+            }
+        };
+
+        const weatherIcons = {
+            sun: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-yellow-500 mx-auto my-2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-6.364-.386 1.591-1.591M3 12H.75m.386-6.364 1.591 1.591z" />
+                  </svg>`,
+            cloud: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-gray-500 mx-auto my-2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.758A3.75 3.75 0 0 0 12 3c-2.069 0-3.923 1.252-4.665 3.09C6.12 6.22 5.09 6.75 4.125 7.5A4.5 4.5 0 0 0 2.25 15z" />
+                    </svg>`,
+            'cloud-sun': `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-blue-500 mx-auto my-2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-6.364-.386 1.591-1.591M3 12H.75m.386-6.364 1.591 1.591m0 0A2.25 2.25 0 0 1 12 13.5a2.25 2.25 0 0 1 2.25 2.25m0 0a2.25 2.25 0 0 1 4.5 0m0 0a2.25 2.25 0 0 1-2.25 2.25m0 0A2.25 2.25 0 0 1 12 13.5a2.25 2.25 0 0 1-2.25 2.25m0 0a2.25 2.25 0 0 1-4.5 0m0 0A2.25 2.25 0 0 1 12 13.5a2.25 2.25 0 0 1-2.25-2.25" />
+                          </svg>`,
+            bolt: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-yellow-600 mx-auto my-2">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+                   </svg>`
+        };
+
+        const trendIcons = {
+            up: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5 mr-1 text-green-600">
+                     <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                 </svg>`,
+            down: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5 mr-1 text-red-600">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                   </svg>`,
+            flat: `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-5 h-5 mr-1 text-gray-500">
+                       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                   </svg>`
+        };
+
+
+        // === Weather Demo Logic ===
+        const weatherButton = document.getElementById('weather-button');
+        const weatherLoading = document.getElementById('weather-loading');
+        const weatherResults = document.getElementById('weather-results');
+        const weatherLocationSelect = document.getElementById('weather-location');
+
+        weatherButton.addEventListener('click', () => {
+            weatherResults.classList.add('hidden');
+            weatherLoading.classList.remove('hidden');
+
+            setTimeout(() => {
+                const location = weatherLocationSelect.value;
+                const data = mockWeatherData[location];
+                
+                // Populate current
+                document.getElementById('weather-location-title').textContent = `Forecast for ${weatherLocationSelect.options[weatherLocationSelect.selectedIndex].text}`;
+                document.getElementById('weather-current-temp').textContent = data.current.temp;
+                document.getElementById('weather-current-condition').textContent = data.current.condition;
+                document.getElementById('weather-feels-like').textContent = data.current.feels;
+                document.getElementById('weather-wind').textContent = data.current.wind;
+                document.getElementById('weather-humidity').textContent = data.current.humidity;
+
+                // Populate forecast
+                const forecastGrid = document.getElementById('forecast-grid');
+                forecastGrid.innerHTML = ''; // Clear previous
+                data.forecast.forEach(day => {
+                    forecastGrid.innerHTML += `
+                        <div class="bg-gray-100 p-4 rounded-lg text-center">
+                            <p class="font-semibold text-lg">${day.day}</p>
+                            ${weatherIcons[day.icon] || weatherIcons['cloud-sun']}
+                            <p class="text-xl font-bold">${day.high}</p>
+                            <p class="text-gray-600">${day.low}</p>
+                        </div>
+                    `;
+                });
+
+                weatherLoading.classList.add('hidden');
+                weatherResults.classList.remove('hidden');
+            }, 1000); // 1-second simulation
+        });
+
+        // === Price Demo Logic ===
+        const priceButton = document.getElementById('price-button');
+        const priceLoading = document.getElementById('price-loading');
+        const priceResults = document.getElementById('price-results');
+        const marketLocationSelect = document.getElementById('market-location');
+        const marketCropSelect = document.getElementById('market-crop');
+
+        priceButton.addEventListener('click', () => {
+            priceResults.classList.add('hidden');
+            priceLoading.classList.remove('hidden');
+
+            setTimeout(() => {
+                const location = marketLocationSelect.value;
+                const crop = marketCropSelect.value;
+                const data = mockPriceData[location][crop];
+
+                document.getElementById('price-location-title').textContent = `Prices for ${marketCropSelect.options[marketCropSelect.selectedIndex].text} in ${marketLocationSelect.options[marketLocationSelect.selectedIndex].text}`;
+
+                const tableBody = document.getElementById('price-table-body');
+                tableBody.innerHTML = ''; // Clear previous
+
+                if (data) {
+                    data.forEach(item => {
+                        const trendColor = item.trendDir === 'up' ? 'text-green-600' : (item.trendDir === 'down' ? 'text-red-600' : 'text-gray-500');
+                        const priceColor = item.trendDir === 'up' ? 'text-green-700' : (item.trendDir === 'down' ? 'text-red-700' : 'text-gray-800');
+
+                        tableBody.innerHTML += `
+                            <tr class="border-b">
+                                <td class="py-3 px-4">${item.grade}</td>
+                                <td class="py-3 px-4 font-bold text-lg ${priceColor}">Rs. ${item.price}</td>
+                                <td class="py-3 px-4 ${trendColor} flex items-center">
+                                    ${trendIcons[item.trendDir]}
+                                    ${item.trend}
+                                </td>
+                            </tr>
+                        `;
+                    });
+                } else {
+                     tableBody.innerHTML = `<tr><td colspan="3" class="text-center py-4">No data available for this selection.</td></tr>`;
+                }
+
+                priceLoading.classList.add('hidden');
+                priceResults.classList.remove('hidden');
+            }, 1000); // 1-second simulation
+        });
+
+        // === Input Demo Logic (NEW) ===
+        const analyzePlotButton = document.getElementById('analyze-plot-button');
+        const inputLoading = document.getElementById('input-loading');
+        const inputResults = document.getElementById('input-results');
+        const farmPlotSelect = document.getElementById('farm-plot');
+        
+        analyzePlotButton.addEventListener('click', () => {
+            inputResults.classList.add('hidden');
+            inputLoading.classList.remove('hidden');
+
+            setTimeout(() => {
+                const plot = farmPlotSelect.value;
+                const data = mockPlotData[plot];
+
+                // Populate results
+                document.getElementById('input-plot-title').textContent = data.title;
+                document.getElementById('plot-image').src = data.image;
+                document.getElementById('plot-health').textContent = data.health;
+                document.getElementById('plot-finding').textContent = data.finding;
+                
+                const recList = document.getElementById('plot-recommendations');
+                recList.innerHTML = ''; // Clear previous
+                data.recommendations.forEach(rec => {
+                    recList.innerHTML += `<li>${rec}</li>`;
+                });
+
+                // Apply dynamic styling
+                const plotHealthEl = document.getElementById('plot-health');
+                plotHealthEl.classList.remove('text-green-600', 'text-yellow-600', 'text-red-600');
+                if (data.health === 'Good') {
+                    plotHealthEl.classList.add('text-green-600');
+                } else if (data.health === 'Fair' || data.health === 'Variable') {
+                    plotHealthEl.classList.add('text-yellow-600');
+                } else {
+                    plotHealthEl.classList.add('text-red-600');
+                }
+
+                inputLoading.classList.add('hidden');
+                inputResults.classList.remove('hidden');
+            }, 1500); // 1.5-second simulation for "satellite analysis"
+        });
+
+        // === Credit Score Demo Logic (NEW) ===
+        const creditButton = document.getElementById('credit-button');
+        const creditLoading = document.getElementById('credit-loading');
+        const creditResults = document.getElementById('credit-results');
+        const creditScoreEl = document.getElementById('credit-score');
+        const creditRatingEl = document.getElementById('credit-rating');
+        const creditLoanEl = document.getElementById('credit-loan');
+
+        // Input selectors
+        const creditIrrigation = document.getElementById('credit-irrigation');
+        const creditNutrients = document.getElementById('credit-nutrients');
+        const creditPest = document.getElementById('credit-pest');
+        const creditHistory = document.getElementById('credit-history');
+
+        creditButton.addEventListener('click', () => {
+            creditResults.classList.add('hidden');
+            creditLoading.classList.remove('hidden');
+
+            // Simulate calculation based on inputs
+            setTimeout(() => {
+                const score = calculateCreditScore();
+                
+                creditScoreEl.textContent = score.score;
+                creditRatingEl.textContent = score.rating;
+                creditLoanEl.textContent = `Rs. ${score.loanAmount.toLocaleString('en-IN')}`;
+
+                // Apply dynamic styles
+                creditScoreEl.classList.remove('text-green-700', 'text-yellow-600', 'text-red-600');
+                creditRatingEl.classList.remove('text-green-600', 'text-yellow-600', 'text-red-600');
+
+                if (score.rating === 'Excellent') {
+                    creditScoreEl.classList.add('text-green-700');
+                    creditRatingEl.classList.add('text-green-600');
+                } else if (score.rating === 'Good') {
+                    creditScoreEl.classList.add('text-green-700');
+                    creditRatingEl.classList.add('text-green-600');
+                } else if (score.rating === 'Fair') {
+                    creditScoreEl.classList.add('text-yellow-600');
+                    creditRatingEl.classList.add('text-yellow-600');
+                } else {
+                    creditScoreEl.classList.add('text-red-600');
+                    creditRatingEl.classList.add('text-red-600');
+                }
+
+                creditLoading.classList.add('hidden');
+                creditResults.classList.remove('hidden');
+            }, 1500); // 1.5-second simulation
+        });
+
+        function calculateCreditScore() {
+            let baseScore = 300;
+            const points = {
+                irrigation: { high: 150, medium: 75, low: 0 },
+                nutrients: { optimized: 150, standard: 75, poor: 0 },
+                pest: { good: 100, fair: 50, poor: 0 },
+                history: { excellent: 300, good: 200, none: 100, poor: 0 }
+            };
+
+            baseScore += points.irrigation[creditIrrigation.value];
+            baseScore += points.nutrients[creditNutrients.value];
+            baseScore += points.pest[creditPest.value];
+            baseScore += points.history[creditHistory.value];
+
+            let rating = "Poor";
+            let loanAmount = 0;
+
+            if (baseScore >= 800) {
+                rating = "Excellent";
+                loanAmount = 500000;
+            } else if (baseScore >= 700) {
+                rating = "Good";
+                loanAmount = 250000;
+            } else if (baseScore >= 600) {
+                rating = "Fair";
+                loanAmount = 100000;
+            } else if (baseScore >= 500) {
+                rating = "Poor";
+                loanAmount = 50000;
+            } else {
+                 rating = "Very Poor";
+                 loanAmount = 0;
+            }
+            
+            return { score: baseScore, rating: rating, loanAmount: loanAmount };
+        }
+
+
+        // === Pest Detection Demo Logic (from previous step) ===
+        const fileUpload = document.getElementById('file-upload');
+        const fileNameSpan = document.getElementById('file-name');
+        const fileButton = document.getElementById('file-button');
+        const detectButton = document.getElementById('detect-button');
+        const loadingSpinner = document.getElementById('loading-spinner');
+        
+        // Result elements
+        const resultArea = document.getElementById('result-area');
+        const resultImage = document.getElementById('result-image');
+        const diagnosisTitle = document.getElementById('diagnosis-title');
+        const diagnosisCard = document.getElementById('diagnosis-card');
+        const diseaseNameTitle = document.getElementById('disease-name-title');
+        const diseaseName = document.getElementById('disease-name');
+        const confidenceTitle = document.getElementById('confidence-title');
+        const confidence = document.getElementById('confidence');
+        const recommendationsTitle = document.getElementById('recommendations-title');
+        const recommendationsList = document.getElementById('recommendations');
+
+        let selectedFile = null;
+        let selectedFileMimeType = null;
+
+        fileUpload.addEventListener('change', (event) => {
+            if (event.target.files.length > 0) {
+                selectedFile = event.target.files[0];
+                selectedFileMimeType = selectedFile.type;
+                fileNameSpan.textContent = selectedFile.name;
+                detectButton.disabled = false;
+                resultArea.classList.add('hidden'); // Hide old results
+                
+                // Show a preview of the user's image
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    resultImage.src = e.target.result;
+                };
+                reader.readAsDataURL(selectedFile);
+
+            } else {
+                selectedFile = null;
+                selectedFileMimeType = null;
+                fileNameSpan.textContent = 'No file chosen';
+                detectButton.disabled = true;
+                resultImage.src = 'https://placehold.co/600x400/eeeeee/cccccc?text=Your+Crop+Image';
+            }
+        });
+
+        detectButton.addEventListener('click', async () => {
+            if (!selectedFile) return;
+
+            // Show loading spinner
+            loadingSpinner.classList.remove('hidden');
+            resultArea.classList.add('hidden');
+            detectButton.disabled = true;
+
+            try {
+                // 1. Convert file to base64
+                const base64ImageData = await fileToBase64(selectedFile);
+                
+                // 2. Call the Gemini API
+                const analysisResult = await callGeminiAPI(base64ImageData, selectedFileMimeType);
+                
+                // 3. Display the results
+                displayResults(analysisResult);
+
+            } catch (error) {
+                console.error("Error during analysis:", error);
+                displayError(error.message || "An unknown error occurred.");
+            } finally {
+                // Hide loading and reset button
+                loadingSpinner.classList.add('hidden');
+                resultArea.classList.remove('hidden');
+                
+                // Reset file input
+                fileNameSpan.textContent = 'No file chosen';
+                fileUpload.value = null; 
+                selectedFile = null;
+                selectedFileMimeType = null;
+                detectButton.disabled = true;
+            }
+        });
+
+        /**
+         * Converts a File object to a base64 encoded string.
+         */
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve(reader.result.split(',')[1]); // Get just the base64 part
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        /**
+         * Calls the Gemini API with the image data.
+         * Implements exponential backoff for retries.
+         */
+        async function callGeminiAPI(base64ImageData, mimeType, retryCount = 0) {
+            const maxRetries = 3;
+            const apiKey = "AIzaSyDrexyYrmwzinPl5IjxOD3IBX3sS8r609c"; // API key will be automatically provided
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+            const prompt = `You are an agricultural expert. Analyze this image of a crop and identify any diseases or pests.
+Respond *only* with a JSON object in the format:
+{\"is_healthy\": boolean, \"name\": \"...\", \"confidence\": \"...%\", \"recommendations\": [\"...\", \"...\"]}
+- If the plant is healthy, set \`is_healthy\` to true, \`name\` to 'Healthy', \`confidence\` to 'High', and provide 3-4 recommendations for maintenance.
+- If a disease/pest is found, set \`is_healthy\` to false, \`name\` to the disease name, \`confidence\` to the confidence level, and provide 3-4 brief recommendation bullet points.
+- If the image is not a crop or is unclear, set \`is_healthy\` to false, \`name\` to 'Unknown / Not a crop', \`confidence\` to 'N/A', and recommendations to ['Please upload a clear photo of a crop leaf or plant.']`;
+
+            const payload = {
+                contents: [
+                    {
+                        role: "user",
+                        parts: [
+                            { text: prompt },
+                            {
+                                inlineData: {
+                                    mimeType: mimeType,
+                                    data: base64ImageData
+                                }
+                            }
+                        ]
+                    }
+                ],
+                generationConfig: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                        type: "OBJECT",
+                        properties: {
+                            "is_healthy": { "type": "BOOLEAN" },
+                            "name": { "type": "STRING" },
+                            "confidence": { "type": "STRING" },
+                            "recommendations": {
+                                "type": "ARRAY",
+                                "items": { "type": "STRING" }
+                            }
+                        },
+                        required: ["is_healthy", "name", "confidence", "recommendations"]
+                    }
+                }
+            };
+
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    if (response.status === 429 || response.status >= 500) {
+                        // Throttling or server error, retry with backoff
+                        throw new Error(`APIError ${response.status}`);
+                    }
+                    throw new Error(`API request failed with status ${response.status}: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                
+                const candidate = result.candidates?.[0];
+                if (candidate && candidate.content?.parts?.[0]?.text) {
+                    return JSON.parse(candidate.content.parts[0].text);
+                } else {
+                    throw new Error("Invalid response structure from API.");
+                }
+
+            } catch (error) {
+                if (error.message.startsWith('APIError') && retryCount < maxRetries) {
+                    const delay = Math.pow(2, retryCount) * 1000 + Math.random() * 1000;
+                    await new Promise(resolve => setTimeout(resolve, delay));
+                    return callGeminiAPI(base64ImageData, mimeType, retryCount + 1);
+                }
+                throw error;
+            }
+        }
+
+        /**
+         * Displays the structured results from the API.
+         */
+        function displayResults(result) {
+            // Reset styles
+            diagnosisTitle.classList.remove('text-red-600', 'text-green-600', 'text-gray-600');
+            diagnosisCard.classList.remove('bg-red-50', 'border-red-200', 'bg-green-50', 'border-green-200');
+            diseaseNameTitle.classList.remove('text-red-700', 'text-green-700');
+            confidenceTitle.classList.remove('text-red-700', 'text-green-700');
+            recommendationsTitle.classList.remove('text-red-700', 'text-green-700', 'text-blue-700');
+
+            // Populate text
+            diseaseName.textContent = result.name;
+            confidence.textContent = result.confidence;
+
+            recommendationsList.innerHTML = ''; // Clear old recommendations
+            if (result.recommendations && result.recommendations.length > 0) {
+                result.recommendations.forEach(rec => {
+                    const li = document.createElement('li');
+                    li.textContent = rec;
+                    recommendationsList.appendChild(li);
+                });
+            } else {
+                recommendationsList.innerHTML = '<li>No recommendations provided.</li>';
+            }
+
+            // Apply styles based on result
+            if (result.name === 'Unknown / Not a crop') {
+                // Neutral/Warning style
+                diagnosisTitle.textContent = "Analysis Inconclusive";
+                diagnosisTitle.classList.add('text-gray-600');
+                diagnosisCard.classList.add('bg-gray-50', 'border-gray-200');
+                diseaseNameTitle.classList.add('text-gray-700');
+                confidenceTitle.classList.add('text-gray-700');
+                recommendationsTitle.classList.add('text-gray-700');
+            } else if (result.is_healthy) {
+                // Healthy style
+                diagnosisTitle.textContent = "Diagnosis: Healthy";
+                diagnosisTitle.classList.add('text-green-600');
+                diagnosisCard.classList.add('bg-green-50', 'border-green-200');
+                diseaseNameTitle.classList.add('text-green-700');
+                confidenceTitle.classList.add('text-green-700');
+                recommendationsTitle.classList.add('text-green-700');
+            } else {
+                // Disease detected style
+                diagnosisTitle.textContent = "Diagnosis: Disease Detected";
+                diagnosisTitle.classList.add('text-red-600');
+                diagnosisCard.classList.add('bg-red-50', 'border-red-200');
+                diseaseNameTitle.classList.add('text-red-700');
+                confidenceTitle.classList.add('text-red-700');
+                recommendationsTitle.classList.add('text-blue-700'); // Recommendations are helpful
+            }
+        }
+
+        /**
+         * Displays an error message in the result area.
+         */
+        function displayError(errorMessage) {
+            diagnosisTitle.textContent = "Analysis Failed";
+            diagnosisTitle.classList.add('text-red-600');
+            
+            diagnosisCard.classList.add('bg-red-50', 'border-red-200');
+            
+            diseaseNameTitle.classList.add('text-red-700');
+            diseaseName.textContent = "Error";
+            
+            confidenceTitle.classList.add('text-red-700');
+            confidence.textContent = "N/A";
+
+            recommendationsTitle.classList.add('text-red-700');
+            recommendationsList.innerHTML = `<li>${errorMessage}</li>`;
+        }
+
+    </script>
+</body>
+</html>
